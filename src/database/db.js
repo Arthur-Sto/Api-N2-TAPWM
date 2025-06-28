@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 
 function conectarBanco() {
 
@@ -18,4 +17,4 @@ function conectarBanco() {
 }
 
 
-module.exports = conectarBanco;
+export default conectarBanco;

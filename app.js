@@ -1,31 +1,22 @@
-const express = require('express');
-
-const dotenv = require('dotenv');
-
-const conectarBanco = require('./src/database/db');
-
-const contatoRoutes = require('./src/routes/contatoRoutes');
-
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import conectarBanco from './src/database/db.js';
+import ongRouter from './src/routes/ongRouter.js';
 
 dotenv.config();
 
 const app = express();
 
-
-// Middleware para interpretar JSON no corpo das requisições
-
+// Middlewares globais
+app.use(cors());
 app.use(express.json());
 
+// Rotas
+app.use('/ong', ongRouter);
 
-// Rotas principais
-
-app.use('/api/contatos', contatoRoutes);
-
-
-// Conectar ao banco e iniciar o servidor
-
+// Conectar banco e iniciar servidor
 conectarBanco();
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

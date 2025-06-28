@@ -1,4 +1,4 @@
-import { createUser,updateUser,findAll, findById, setUserHair,getUserInfo } from "../controllers/userController.js";
+import { createUser,updateUser,findAll, findById, setUserHair } from "../controllers/userController.js";
 import { Router } from "express";
 
 const userRoute = Router()

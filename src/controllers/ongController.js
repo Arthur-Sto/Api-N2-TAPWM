@@ -2,14 +2,14 @@ import { Types } from "mongoose";
 import { createOngService, findAllOngsService, findOngByIdService, findOngByNameService } from "../services/ongService.js";
 
 export const createOng = async (req, res) => {
-    const { Nome, Desc, reps } = req.body
+    const { Nome, Desc, representantes  } = req.body
     console.log(req.body)
     try {
-        if (!Nome || !Desc || !reps) {
+        if (!Nome || !Desc || !representantes ) {
             return res.status(400).send({ message: "Preencha todos os campos" })
         }
 
-        const ong = await createOngService({ Nome, Desc, reps })
+        const ong = await createOngService({ Nome, Desc, representantes  })
 
         if (!ong) {
             return res.status(400).send({ message: "Algo deu errado" })
